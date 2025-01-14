@@ -1,50 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Galerie de Photos en A-Frame</title>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <meta charset="UTF-8">
+    <title>A-Frame Ambiance Sombre</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
 </head>
 <body>
-<a-scene>
-  <!-- Caméra avec contrôles de déplacement -->
-  <a-entity   position="0 1.7 0"></a-entity>
+<a-scene fog="type: exponential; color: #0D0D1A; density: 0.2">
+    <!-- Lumière ambiante très faible -->
+    <a-light type="ambient" color="#F8D34E" intensity="0.3"></a-light>
 
-  <!-- Sol -->
-  <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#7A7B78"></a-plane>
+    <!-- Lumière sous le lampadaire -->
 
-  <!-- Mur avant -->
-  <a-plane position="0 1.5 -5" rotation="0 0 0" width="10" height="3" color="#958C7D"></a-plane>
+    <a-light type="point"  intensity="2" distance="5" position="2.48023 2.5 -0.30464" light="color: red"></a-light>
+    <a-light type="point"  intensity="2" distance="5" position="-1.98152 2.5 -0.30464" light="color: #6be99f"></a-light>
 
-  <!-- Mur arrière -->
-  <a-plane position="0 1.5 5" rotation="0 180 0" width="10" height="3" color="#958C7D"></a-plane>
 
-  <!-- Mur gauche -->
-  <a-plane position="-5 1.5 0" rotation="0 90 0" width="10" height="3" color="#958C7D"></a-plane>
+    <!-- Caméra -->
+    <a-camera position="0 2 5"></a-camera>
 
-  <!-- Mur droit -->
-  <a-plane position="5 1.5 0" rotation="0 -90 0" width="10" height="3" color="#958C7D"></a-plane>
+    <!-- Sol -->
+    <a-plane position="" rotation="-90 0 0" width="4" height="4" color="#333" scale="2 1 1"></a-plane>
 
-  <!-- Photo 1 (Mur avant) -->
-  <a-image src="photo1.jpg" position="-3 1.5 -4.9" rotation="0 0 0" width="2" height="1.5"></a-image>
+    <!-- Modèles 3D alignés -->
+    <a-entity gltf-model="models/busStop.glb" scale="0.15 0.15 0.15" position="2.2268 0 1" ></a-entity>
 
-  <!-- Photo 2 (Mur avant) -->
-  <a-image src="photo2.jpg" position="0 1.5 -4.9" rotation="0 0 0" width="2" height="1.5"></a-image>
+    <a-entity gltf-model="models/banc.glb" position="0 0.76174 -0.51877" rotation="1 90 0"></a-entity>
 
-  <!-- Photo 3 (Mur avant) -->
-  <a-image src="photo3.jpg" position="3 1.5 -4.9" rotation="0 0 0"  width="1.5" height="2"></a-image>
+    <a-entity gltf-model="models/lampadaire.glb" position="-2.1411 3 -0.30464" rotation="0.05 270 0" scale="1.2 1.2 1.2"></a-entity>
 
-  <!-- Photo 4 (Mur gauche) -->
-  <a-image src="photo4.jpg" position="-4.9 1.5 -3" rotation="0 90 0" width="1.5" height="2"></a-image>
+    <a-entity gltf-model="models/lampadaire.glb" position="2.7267 3 -0.30464" rotation="0.05 90 0" scale="1.2 1.2 1.2"></a-entity>
 
-  <!-- Photo 5 (Mur gauche) -->
-  <a-image src="photo5.jpg" position="-4.9 1.5 0" rotation="0 90 0"   width="1.5" height="2"></a-image>
-
-  <!-- Photo 6 (Mur gauche) -->
-  <a-image src="photo6.jpg" position="-4.9 1.5 3" rotation="0 90 0" width="1.5" height="2"></a-image>
-
-  <!-- Lumière -->
-  <a-light type="ambient" color="#fff"></a-light>
+    <!-- Ciel sombre -->
+    <a-sky color="#0D0D1A"></a-sky>
 </a-scene>
 </body>
 </html>
