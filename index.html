@@ -18,7 +18,7 @@
     <a-light type="point" intensity="2" distance="5" position="-1.98152 2.5 -0.30464" light="color: #6be99f"></a-light>
 
     <!-- Caméra avec contrôles de mouvement -->
-    <a-entity id="rig" position="0 1.2 0">  <!-- Position modifiée ici -->
+    <a-entity id="rig" position="0 1 0">  <!-- Position modifiée ici -->
         <a-camera wasd-controls look-controls>
             <!-- Ajout de contrôleurs VR -->
             <a-entity oculus-touch-controls="hand: left" thumbstick-controls></a-entity>
@@ -31,16 +31,16 @@
 
     <!-- Modèles 3D alignés -->
     <a-entity gltf-model="models/busStop.glb" scale="0.1 0.1 0.1" position="2.2268 0 1"></a-entity>
-    <a-entity gltf-model="models/banc.glb" position="1.13041 0.4 -0.78492" rotation="1 90 0" scale="0.5 0.5 0.5"></a-entity>
-    <a-entity gltf-model="models/banc.glb" position="-1.13041 0.4 -0.78492" rotation="1 90 0" scale="0.5 0.5 0.5"></a-entity>
-    <a-entity gltf-model="models/lampadaire.glb" position="-2.1411 3 -0.30464" rotation="0.05 270 0" scale="1.2 1.2 1.2"></a-entity>
-    <a-entity gltf-model="models/lampadaire.glb" position="2.7267 3 -0.30464" rotation="0.05 90 0" scale="1.2 1.2 1.2"></a-entity>
+    <a-entity gltf-model="models/banc.glb" position="2.13041 0.6 -0.78492" rotation="1 90 0" scale="0.8 0.8 0.8"></a-entity>
+    <a-entity gltf-model="models/banc.glb" position="-1.13041 0.6 -0.78492" rotation="1 90 0" scale="0.8 0.8 0.8"></a-entity>
+    <a-entity gltf-model="models/lampadaire.glb" position="-3.1411 3 -0.30464" rotation="0.05 270 0" scale="1.2 1.2 1.2"></a-entity>
+    <a-entity gltf-model="models/lampadaire.glb" position="3.7267 3 -0.30464" rotation="0.05 90 0" scale="1.2 1.2 1.2"></a-entity>
 
     <!-- Ciel sombre -->
     <a-sky color="#0D0D1A"></a-sky>
 </a-scene>
 
-<script>
+<<script>
     AFRAME.registerComponent("thumbstick-controls", {
         init: function () {
             this.el.addEventListener(
@@ -65,10 +65,11 @@
 
             if (Math.abs(thumbstickY) > 0.1) {
                 // Déplacement sur l'axe Z (avant/arrière)
-                rig.object3D.position.z -= thumbstickY * step;
+                rig.object3D.position.z += thumbstickY * step;
             }
         }
     });
 </script>
+
 </body>
 </html>
