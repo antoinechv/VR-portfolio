@@ -7,7 +7,11 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
 </head>
 <body>
-<a-scene fog="type: exponential; color: #0D0D1A; density: 0.2">
+<a-scene
+        fog="type: exponential; color: #0D0D1A; density: 0.2"
+        vr-mode-ui="enabled: true"
+        embedded>
+
     <!-- Lumière ambiante très faible -->
     <a-light type="ambient" color="#F8D34E" intensity="0.3"></a-light>
 
@@ -37,5 +41,20 @@
     <!-- Ciel sombre -->
     <a-sky color="#0D0D1A"></a-sky>
 </a-scene>
+
+<script>
+    // S'assurer que le mode VR est activé
+    document.querySelector('a-scene').addEventListener('loaded', () => {
+        console.log('Scene loaded and ready for VR');
+
+        // Forcer l'activation du mode VR si disponible
+        const scene = document.querySelector('a-scene');
+        if (scene && scene.enterVR) {
+            scene.enterVR();
+        } else {
+            console.warn('VR mode not supported or not available.');
+        }
+    });
+</script>
 </body>
 </html>
