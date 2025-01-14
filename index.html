@@ -8,8 +8,7 @@
 <body>
 <a-scene
         fog="type: exponential; color: #0D0D1A; density: 0.2"
-        vr-mode-ui="enabled: true"
-        embedded>
+>
 
     <!-- Lumière ambiante très faible -->
     <a-light type="ambient" color="#F8D34E" intensity="0.3"></a-light>
@@ -19,7 +18,7 @@
     <a-light type="point" intensity="2" distance="5" position="-1.98152 2.5 -0.30464" light="color: #6be99f"></a-light>
 
     <!-- Caméra avec contrôles de mouvement -->
-    <a-entity id="rig" position="0 1.6 0">
+    <a-entity id="rig" position="0 1.2 0">  <!-- Position modifiée ici -->
         <a-camera wasd-controls look-controls>
             <!-- Ajout de contrôleurs VR -->
             <a-entity oculus-touch-controls="hand: left" thumbstick-controls></a-entity>
