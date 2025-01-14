@@ -7,11 +7,11 @@
 </head>
 <body>
 <a-scene
-        fog="type: exponential; color: #0D0D1A; density: 0.2"
+        fog="type: exponential; color: #FFFFFF; density: 0.2"
 >
 
     <!-- Lumière ambiante très faible -->
-    <a-light type="ambient" color="#F8D34E" intensity="0.3"></a-light>
+    <a-light type="ambient" color="#FFFFFF" intensity="0.3"></a-light>
 
     <!-- Lumière sous le lampadaire -->
     <a-light type="point" intensity="2" distance="5" position="2.48023 2.5 -0.30464" light="color: red"></a-light>
@@ -27,7 +27,7 @@
     </a-entity>
 
     <!-- Sol avec collision -->
-    <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#333" scale="2 1 1" static-body></a-plane>
+
 
     <!-- Modèles 3D alignés -->
     <a-entity gltf-model="models/busStop.glb" scale="0.1 0.1 0.1" position="2.2268 0 1"></a-entity>
@@ -37,7 +37,7 @@
     <a-entity gltf-model="models/lampadaire.glb" position="3.7267 3 -0.30464" rotation="0.05 90 0" scale="1.2 1.2 1.2"></a-entity>
 
     <!-- Ciel sombre -->
-    <a-sky color="#0D0D1A"></a-sky>
+    <a-sky color="#FFFFFF"></a-sky>
 </a-scene>
 
 <<script>
