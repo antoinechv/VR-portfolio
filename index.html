@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Galerie de Photos en A-Frame</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+<a-scene>
+  <!-- Caméra avec contrôles de déplacement -->
+  <a-entity   position="0 1.7 0"></a-entity>
+
+  <!-- Sol -->
+  <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#7A7B78"></a-plane>
+
+  <!-- Mur avant -->
+  <a-plane position="0 1.5 -5" rotation="0 0 0" width="10" height="3" color="#958C7D"></a-plane>
+
+  <!-- Mur arrière -->
+  <a-plane position="0 1.5 5" rotation="0 180 0" width="10" height="3" color="#958C7D"></a-plane>
+
+  <!-- Mur gauche -->
+  <a-plane position="-5 1.5 0" rotation="0 90 0" width="10" height="3" color="#958C7D"></a-plane>
+
+  <!-- Mur droit -->
+  <a-plane position="5 1.5 0" rotation="0 -90 0" width="10" height="3" color="#958C7D"></a-plane>
+
+  <!-- Photo 1 (Mur avant) -->
+  <a-image src="photo1.jpg" position="-3 1.5 -4.9" rotation="0 0 0" width="2" height="1.5"></a-image>
+
+  <!-- Photo 2 (Mur avant) -->
+  <a-image src="photo2.jpg" position="0 1.5 -4.9" rotation="0 0 0" width="2" height="1.5"></a-image>
+
+  <!-- Photo 3 (Mur avant) -->
+  <a-image src="photo3.jpg" position="3 1.5 -4.9" rotation="0 0 0"  width="1.5" height="2"></a-image>
+
+  <!-- Photo 4 (Mur gauche) -->
+  <a-image src="photo4.jpg" position="-4.9 1.5 -3" rotation="0 90 0" width="1.5" height="2"></a-image>
+
+  <!-- Photo 5 (Mur gauche) -->
+  <a-image src="photo5.jpg" position="-4.9 1.5 0" rotation="0 90 0"   width="1.5" height="2"></a-image>
+
+  <!-- Photo 6 (Mur gauche) -->
+  <a-image src="photo6.jpg" position="-4.9 1.5 3" rotation="0 90 0" width="1.5" height="2"></a-image>
+
+  <!-- Lumière -->
+  <a-light type="ambient" color="#fff"></a-light>
+</a-scene>
+</body>
+</html>
