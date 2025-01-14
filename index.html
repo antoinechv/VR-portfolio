@@ -22,39 +22,60 @@
     <!-- Caméra avec contrôles de mouvement -->
     <a-entity id="rig" movement-controls position="0 1.6 0">
         <a-camera wasd-controls look-controls>
-            <!-- Ajout de contrôleurs VR -->
-            <a-entity oculus-touch-controls="hand: left"></a-entity>
-            <a-entity oculus-touch-controls="hand: right"></a-entity>
+            <a-entity oculus-touch-controls="hand: left" thumbstick-controls></a-entity>
+            <a-entity oculus-touch-controls="hand: right" ></a-entity>
         </a-camera>
     </a-entity>
 
     <!-- Sol avec collision -->
-    <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#333" scale="2 1 1" static-body></a-plane>
+    <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#333" scale="2 1 1"
+             static-body></a-plane>
 
     <!-- Modèles 3D alignés -->
     <a-entity gltf-model="models/busStop.glb" scale="0.1 0.1 0.1" position="2.2268 0 1"></a-entity>
-    <a-entity gltf-model="models/banc.glb" position="1.13041 0.4 -0.78492" rotation="1 90 0" scale="0.5 0.5 0.5"></a-entity>
-    <a-entity gltf-model="models/banc.glb" position="-1.13041 0.4 -0.78492" rotation="1 90 0" scale="0.5 0.5 0.5"></a-entity>
-    <a-entity gltf-model="models/lampadaire.glb" position="-2.1411 3 -0.30464" rotation="0.05 270 0" scale="1.2 1.2 1.2"></a-entity>
-    <a-entity gltf-model="models/lampadaire.glb" position="2.7267 3 -0.30464" rotation="0.05 90 0" scale="1.2 1.2 1.2"></a-entity>
+    <a-entity gltf-model="models/banc.glb" position="1.13041 0.4 -0.78492" rotation="1 90 0"
+              scale="0.5 0.5 0.5"></a-entity>
+    <a-entity gltf-model="models/banc.glb" position="-1.13041 0.4 -0.78492" rotation="1 90 0"
+              scale="0.5 0.5 0.5"></a-entity>
+    <a-entity gltf-model="models/lampadaire.glb" position="-2.1411 3 -0.30464" rotation="0.05 270 0"
+              scale="1.2 1.2 1.2"></a-entity>
+    <a-entity gltf-model="models/lampadaire.glb" position="2.7267 3 -0.30464" rotation="0.05 90 0"
+              scale="1.2 1.2 1.2"></a-entity>
 
     <!-- Ciel sombre -->
     <a-sky color="#0D0D1A"></a-sky>
 </a-scene>
 
 <script>
-    // S'assurer que le mode VR est activé
-    document.querySelector('a-scene').addEventListener('loaded', () => {
-        console.log('Scene loaded and ready for VR');
+    AFRAME.registerComponent("thumbstick-controls", {
+        init: function () {
+            this.el.addEventListener(
+                "thumbstickmoved",
+                this.onThumbstickMoved.bind(this)
+            );
+        },
 
-        // Forcer l'activation du mode VR si disponible
-        const scene = document.querySelector('a-scene');
-        if (scene && scene.enterVR) {
-            scene.enterVR();
-        } else {
-            console.warn('VR mode not supported or not available.');
+        onThumbstickMoved: function (evt) {
+            const rig = document.querySelector("#rig");
+            const step = 0.1;
+
+            // Récupère les valeurs de thumbstick (x et y)
+            const thumbstickX = evt.detail.x;
+            const thumbstickY = evt.detail.y;
+
+            // Vérifie la direction du thumbstick et déplace le "rig" en conséquence
+            if (Math.abs(thumbstickX) > 0.1) {
+                // Déplacement sur l'axe X (gauche/droite)
+                rig.object3D.position.x += thumbstickX * step;
+            }
+
+            if (Math.abs(thumbstickY) > 0.1) {
+                // Déplacement sur l'axe Z (avant/arrière)
+                rig.object3D.position.z -= thumbstickY * step;
+            }
         }
     });
+
 </script>
 </body>
 </html>
